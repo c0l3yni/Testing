@@ -11,7 +11,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 
@@ -76,6 +78,7 @@ class StudentServiceTest {
                 .isInstanceOf(BadRequestException.class)
                 .hasMessageContaining("Email " + student.getEmail() + " taken");
 
+        verify(studentRepository,never()).save(any());
 
     }
 
